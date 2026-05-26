@@ -31,7 +31,6 @@ from fastapi import FastAPI
 from app.database import engine, Base
 from app.routes import router
 
-# Create all tables automatically on startup
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -43,7 +42,8 @@ app = FastAPI(
 app.include_router(router)
 
 @app.get("/")
-def root():
+def home():
     return {
-        "message": "URL Shortener API is running"
+        "message": "URL Shortener API is live 🚀",
+        "docs": "/docs"
     }
